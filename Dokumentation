@@ -1,0 +1,22 @@
+1. Passendes Image auf hub.docker.com suchen
+
+2. Ein eigenes Dockerfile erstellen → [Dockerfile]
+
+3. Eine index.html erstellen und im Verzeichnis /public-html speichern
+
+4. Ein Docker-Image mit folgendem Befehl erstellen:
+sh
+Kopieren
+Bearbeiten
+docker build -t "mein-webserver" .
+
+5. Ein lokales Verzeichnis für Log-Dateien anlegen
+
+6. Den Container starten:
+sh
+Kopieren
+Bearbeiten
+docker run -d -p 8080:80 \
+-v /home/vmadmin/mein-apache-projekt/logs:/usr/local/apache2/logs \
+-v /home/vmadmin/public-html:/usr/local/apache2/htdocs \
+--name mein-webserver httpd
